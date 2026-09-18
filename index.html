@@ -110,22 +110,42 @@
     /* ---------- Flowers ---------- */
     .flower {
       position: fixed;
-      bottom: -10px;
-      width: 330px;
-      max-width: 35vw;
+      top: 0;
+      height: 100vh;
+      width: auto;
       z-index: 2;
       pointer-events: none;
       user-select: none;
     }
     
     .flower-left {
-      left: -35px;
+      left: -10px;
     }
     
     .flower-right {
-      right: -35px;
+      right: -10px;
       transform: scaleX(-1);
     }
+    
+    
+    /* ---------- Mobile ---------- */
+    @media (max-width: 700px) {
+    
+      .flower {
+        height: 100vh;
+        width: auto;
+      }
+    
+      .flower-left {
+        left: -35px;
+      }
+    
+      .flower-right {
+        right: -35px;
+      }
+    
+    }
+    
     /* ---------- Slides ---------- */
     .slides {
       position: relative;
