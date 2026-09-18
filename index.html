@@ -109,74 +109,23 @@
 
     /* ---------- Flowers ---------- */
     .flower {
-      position: absolute;
-      pointer-events: none;
-      z-index: 1;
-      opacity: .72;
-    }
-
-    .flower-left {
-      left: -18px;
+      position: fixed;
       bottom: -10px;
-      transform: rotate(-8deg);
+      width: 330px;
+      max-width: 35vw;
+      z-index: 2;
+      pointer-events: none;
+      user-select: none;
     }
-
+    
+    .flower-left {
+      left: -35px;
+    }
+    
     .flower-right {
-      right: -30px;
-      bottom: -4px;
-      transform: scaleX(-1) rotate(-7deg);
+      right: -35px;
+      transform: scaleX(-1);
     }
-
-    .stem {
-      position: absolute;
-      width: 2px;
-      height: 250px;
-      background: linear-gradient(to top, rgba(92,111,81,.25), rgba(92,111,81,.75));
-      bottom: 0;
-      left: 48px;
-      transform: rotate(-14deg);
-      transform-origin: bottom;
-    }
-
-    .stem.s2 {
-      height: 190px;
-      left: 100px;
-      transform: rotate(7deg);
-    }
-
-    .stem.s3 {
-      height: 150px;
-      left: 12px;
-      transform: rotate(-28deg);
-    }
-
-    .petal-cluster {
-      position: absolute;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 50% 10%, #e4bbb6 0 20%, transparent 21%),
-        radial-gradient(circle at 90% 50%, #d5a29e 0 20%, transparent 21%),
-        radial-gradient(circle at 50% 90%, #e4bbb6 0 20%, transparent 21%),
-        radial-gradient(circle at 10% 50%, #d5a29e 0 20%, transparent 21%),
-        radial-gradient(circle, #f3dcd5 0 13%, transparent 14%);
-    }
-
-    .pc1 { left: 18px; bottom: 210px; }
-    .pc2 { left: 78px; bottom: 175px; transform: scale(.78); }
-    .pc3 { left: 0; bottom: 126px; transform: scale(.62); }
-    .pc4 { left: 108px; bottom: 255px; transform: scale(.62); }
-
-    .flower-right .petal-cluster {
-      background:
-        radial-gradient(circle at 50% 10%, #ead0c5 0 20%, transparent 21%),
-        radial-gradient(circle at 90% 50%, #ddb4aa 0 20%, transparent 21%),
-        radial-gradient(circle at 50% 90%, #ead0c5 0 20%, transparent 21%),
-        radial-gradient(circle at 10% 50%, #ddb4aa 0 20%, transparent 21%),
-        radial-gradient(circle, #fff2e8 0 13%, transparent 14%);
-    }
-
     /* ---------- Slides ---------- */
     .slides {
       position: relative;
@@ -579,27 +528,10 @@
   <main class="page">
     <div class="arch"></div>
 
-    <!-- Decorative floral silhouettes -->
-    <div class="flower flower-left">
-      <div class="stem"></div>
-      <div class="stem s2"></div>
-      <div class="stem s3"></div>
-      <div class="petal-cluster pc1"></div>
-      <div class="petal-cluster pc2"></div>
-      <div class="petal-cluster pc3"></div>
-      <div class="petal-cluster pc4"></div>
-    </div>
-
-    <div class="flower flower-right">
-      <div class="stem"></div>
-      <div class="stem s2"></div>
-      <div class="stem s3"></div>
-      <div class="petal-cluster pc1"></div>
-      <div class="petal-cluster pc2"></div>
-      <div class="petal-cluster pc3"></div>
-      <div class="petal-cluster pc4"></div>
-    </div>
-
+   <!-- Decorative flowers -->
+  <img src="images/bunga.png" class="flower flower-left" alt="">
+  <img src="images/bunga.png" class="flower flower-right" alt="">
+    
     <div class="sparkles">
       <span class="sparkle sp1">✦</span>
       <span class="sparkle sp2">✧</span>
