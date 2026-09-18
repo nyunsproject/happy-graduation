@@ -117,36 +117,16 @@
       pointer-events: none;
       user-select: none;
     }
-    
+
     .flower-left {
-      left: 0;
+      left: -10px;
     }
-    
+
     .flower-right {
-      right: 0;
+      right: -10px;
       transform: scaleX(-1);
     }
-    
-    /* ---------- Mobile Flowers ---------- */
-    @media (max-width: 700px) {
-      .flower {
-        position: fixed;
-        top: 0;
-        height: 100vh;
-        width: auto;
-        max-width: none;
-      }
-    
-      .flower-left {
-        left: -5px;
-      }
-    
-      .flower-right {
-        right: -5px;
-        transform: scaleX(-1);
-      }
-    }
-    
+
     /* ---------- Slides ---------- */
     .slides {
       position: relative;
@@ -341,8 +321,15 @@
       font-size: 15px;
     }
 
-    .card::before { left: 18px; top: 14px; }
-    .card::after { right: 18px; bottom: 14px; }
+    .card::before {
+      left: 18px;
+      top: 14px;
+    }
+
+    .card::after {
+      right: 18px;
+      bottom: 14px;
+    }
 
     .card p {
       font-family: "Cormorant Garamond", serif;
@@ -474,20 +461,59 @@
       animation: float 5s ease-in-out infinite;
     }
 
-    .sp1 { left: 16%; top: 22%; animation-delay: -.8s; }
-    .sp2 { left: 79%; top: 20%; animation-delay: -2s; font-size: 8px; }
-    .sp3 { left: 87%; top: 64%; animation-delay: -3.1s; }
-    .sp4 { left: 11%; top: 67%; animation-delay: -1.7s; font-size: 8px; }
+    .sp1 {
+      left: 16%;
+      top: 22%;
+      animation-delay: -.8s;
+    }
+
+    .sp2 {
+      left: 79%;
+      top: 20%;
+      animation-delay: -2s;
+      font-size: 8px;
+    }
+
+    .sp3 {
+      left: 87%;
+      top: 64%;
+      animation-delay: -3.1s;
+    }
+
+    .sp4 {
+      left: 11%;
+      top: 67%;
+      animation-delay: -1.7s;
+      font-size: 8px;
+    }
 
     @keyframes float {
-      0%,100% { transform: translateY(0) rotate(0); opacity: .3; }
-      50% { transform: translateY(-13px) rotate(18deg); opacity: .8; }
+      0%,100% {
+        transform: translateY(0) rotate(0);
+        opacity: .3;
+      }
+
+      50% {
+        transform: translateY(-13px) rotate(18deg);
+        opacity: .8;
+      }
     }
 
     /* ---------- Responsive ---------- */
     @media (max-width: 700px) {
-      .page::before { inset: 10px; }
-      .page::after { inset: 20px; }
+
+      .page::before {
+        inset: 10px;
+      }
+
+      .page::after {
+        inset: 20px;
+      }
+
+      /* BUNGA DISEMBUNYIKAN DI HP */
+      .flower {
+        display: none;
+      }
 
       .arch {
         width: 82vw;
@@ -532,27 +558,21 @@
       .card {
         padding: 32px 25px;
       }
-
-      .flower {
-        transform: scale(.7);
-        transform-origin: bottom;
-      }
-
-      .flower-right {
-        transform: scaleX(-1) scale(.7);
-      }
     }
   </style>
 </head>
 
 <body>
+
   <main class="page">
+
     <div class="arch"></div>
 
-   <!-- Decorative flowers -->
-  <img src="images/bunga.png" class="flower flower-left" alt="">
-  <img src="images/bunga.png" class="flower flower-right" alt="">
-    
+    <!-- Decorative flowers -->
+    <!-- Akan tampil di laptop/PC, otomatis hilang di HP -->
+    <img src="images/bunga.png" class="flower flower-left" alt="">
+    <img src="images/bunga.png" class="flower flower-right" alt="">
+
     <div class="sparkles">
       <span class="sparkle sp1">✦</span>
       <span class="sparkle sp2">✧</span>
@@ -560,218 +580,475 @@
       <span class="sparkle sp4">✧</span>
     </div>
 
-    <div class="counter"><span id="current">01</span> / 06</div>
+    <div class="counter">
+      <span id="current">01</span> / 06
+    </div>
 
     <section class="slides">
 
       <!-- SLIDE 1 -->
       <article class="slide active">
         <div class="content">
-          <div class="eyebrow">A little celebration for you</div>
-          <h1>Happy<br>Graduation</h1>
+
+          <div class="eyebrow">
+            A little celebration for you
+          </div>
+
+          <h1>
+            Happy<br>
+            Graduation
+          </h1>
+
           <span class="amp">✦</span>
-          <div class="name">Nama Wisudawan / Wisudawati</div>
-          <div class="date">2026 · YOU DID IT</div>
+
+          <div class="name">
+            Nama Wisudawan / Wisudawati
+          </div>
+
+          <div class="date">
+            2026 · YOU DID IT
+          </div>
+
           <p class="subtitle">
             Hari ini bukan cuma tentang toga dan gelar,
             tapi tentang semua proses, air mata, tawa,
             dan perjuangan yang akhirnya sampai di sini.
           </p>
+
         </div>
       </article>
+
 
       <!-- SLIDE 2 -->
       <article class="slide">
         <div class="content">
-          <div class="eyebrow">A message for you</div>
-          <h2>Untuk seseorang<br>yang berhasil sampai akhir</h2>
+
+          <div class="eyebrow">
+            A message for you
+          </div>
+
+          <h2>
+            Untuk seseorang<br>
+            yang berhasil sampai akhir
+          </h2>
 
           <div class="card">
+
             <p>
               “Selamat atas kelulusanmu! Semoga setelah hari ini,
               semakin banyak hal baik yang datang. Jangan lupa
               menikmati pencapaian ini, karena kamu benar-benar
               pantas merayakannya.”
             </p>
-            <div class="signature">with love, someone who is proud of you ♡</div>
+
+            <div class="signature">
+              with love, someone who is proud of you ♡
+            </div>
+
           </div>
+
         </div>
       </article>
+
 
       <!-- SLIDE 3 -->
       <article class="slide">
         <div class="content">
+
           <div class="photo-layout">
+
             <div class="photo-frame">
               <img src="images/foto1.jpg" alt="Foto wisuda">
             </div>
 
             <div class="photo-copy">
-              <div class="photo-number">01</div>
-              <h2>The beginning<br>of a new chapter.</h2>
+
+              <div class="photo-number">
+                01
+              </div>
+
+              <h2>
+                The beginning<br>
+                of a new chapter.
+              </h2>
+
               <p>
                 Satu foto untuk mengingat hari ketika semua
                 perjuangan berubah menjadi sebuah pencapaian.
               </p>
+
             </div>
+
           </div>
+
         </div>
       </article>
+
 
       <!-- SLIDE 4 -->
       <article class="slide">
         <div class="content">
+
           <div class="photo-layout">
+
             <div class="photo-frame">
               <img src="images/foto2.jpg" alt="Foto wisuda">
             </div>
 
             <div class="photo-copy">
-              <div class="photo-number">02</div>
-              <h2>Remember<br>how far you came.</h2>
+
+              <div class="photo-number">
+                02
+              </div>
+
+              <h2>
+                Remember<br>
+                how far you came.
+              </h2>
+
               <p>
                 Dari hari-hari yang berat sampai hari ini.
                 Semua langkah kecil ternyata membawa kamu
                 sejauh ini.
               </p>
+
             </div>
+
           </div>
+
         </div>
       </article>
+
 
       <!-- SLIDE 5 -->
       <article class="slide">
         <div class="content">
+
           <div class="photo-layout">
+
             <div class="photo-frame">
               <img src="images/foto3.jpg" alt="Foto wisuda">
             </div>
 
             <div class="photo-copy">
-              <div class="photo-number">03</div>
-              <h2>More dreams<br>are waiting.</h2>
+
+              <div class="photo-number">
+                03
+              </div>
+
+              <h2>
+                More dreams<br>
+                are waiting.
+              </h2>
+
               <p>
                 Kelulusan bukan akhir. Ini adalah pintu menuju
                 cerita baru, mimpi baru, dan versi baru dari dirimu.
               </p>
+
             </div>
+
           </div>
+
         </div>
       </article>
+
 
       <!-- SLIDE 6 -->
       <article class="slide">
         <div class="content">
-          <div class="final-star">✦</div>
-          <div class="eyebrow">And finally...</div>
-          <h2>Congratulations!</h2>
+
+          <div class="final-star">
+            ✦
+          </div>
+
+          <div class="eyebrow">
+            And finally...
+          </div>
+
+          <h2>
+            Congratulations!
+          </h2>
+
           <div class="final-message">
             May this achievement be the first of many beautiful
             things that are yet to come.
           </div>
-          <div class="name">You did it. ♡</div>
-          <div class="tiny">the end · but also a new beginning</div>
+
+          <div class="name">
+            You did it. ♡
+          </div>
+
+          <div class="tiny">
+            the end · but also a new beginning
+          </div>
+
         </div>
       </article>
 
     </section>
 
-    <button class="next-btn" id="nextBtn" type="button">Lanjut →</button>
-    <div class="progress" id="progress"></div>
+
+    <!-- NEXT BUTTON -->
+    <button
+      class="next-btn"
+      id="nextBtn"
+      type="button">
+      Lanjut →
+    </button>
+
+
+    <!-- PROGRESS DOTS -->
+    <div
+      class="progress"
+      id="progress">
+    </div>
+
   </main>
 
+
   <script>
-    const slides = [...document.querySelectorAll(".slide")];
-    const nextBtn = document.getElementById("nextBtn");
-    const current = document.getElementById("current");
-    const progress = document.getElementById("progress");
+
+    const slides = [
+      ...document.querySelectorAll(".slide")
+    ];
+
+    const nextBtn =
+      document.getElementById("nextBtn");
+
+    const current =
+      document.getElementById("current");
+
+    const progress =
+      document.getElementById("progress");
 
     let index = 0;
     let locked = false;
 
-    // Create progress dots
+
+    /* ---------- Create progress dots ---------- */
+
     slides.forEach((_, i) => {
-      const dot = document.createElement("span");
-      dot.className = "dot" + (i === 0 ? " active" : "");
+
+      const dot =
+        document.createElement("span");
+
+      dot.className =
+        "dot" + (i === 0 ? " active" : "");
+
       progress.appendChild(dot);
+
     });
 
-    const dots = [...document.querySelectorAll(".dot")];
+
+    const dots = [
+      ...document.querySelectorAll(".dot")
+    ];
+
+
+    /* ---------- Show slide ---------- */
 
     function showSlide(nextIndex) {
-      if (locked || nextIndex === index) return;
+
+      if (
+        locked ||
+        nextIndex === index
+      ) {
+        return;
+      }
 
       locked = true;
 
       const oldIndex = index;
-      index = (nextIndex + slides.length) % slides.length;
 
-      slides[oldIndex].classList.remove("active");
-      slides[oldIndex].classList.add("prev");
+      index =
+        (nextIndex + slides.length)
+        % slides.length;
 
-      // Small delay makes the "leave -> enter" animation feel intentional
+
+      slides[oldIndex]
+        .classList
+        .remove("active");
+
+      slides[oldIndex]
+        .classList
+        .add("prev");
+
+
       setTimeout(() => {
-        slides[index].classList.add("active");
-        slides[oldIndex].classList.remove("prev");
+
+        slides[index]
+          .classList
+          .add("active");
+
+        slides[oldIndex]
+          .classList
+          .remove("prev");
+
       }, 90);
 
-      current.textContent = String(index + 1).padStart(2, "0");
+
+      current.textContent =
+        String(index + 1)
+        .padStart(2, "0");
+
 
       dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === index);
+
+        dot.classList.toggle(
+          "active",
+          i === index
+        );
+
       });
 
-      nextBtn.textContent = index === slides.length - 1
-        ? "Ulangi ↻"
-        : "Lanjut →";
+
+      nextBtn.textContent =
+        index === slides.length - 1
+          ? "Ulangi ↻"
+          : "Lanjut →";
+
 
       setTimeout(() => {
+
         locked = false;
+
       }, 780);
+
     }
 
-    nextBtn.addEventListener("click", () => {
-      if (index === slides.length - 1) {
-        // Restart from the first slide
-        slides[index].classList.remove("active");
-        index = 0;
-        slides[index].classList.add("active");
-        current.textContent = "01";
-        dots.forEach((dot, i) => dot.classList.toggle("active", i === 0));
-        nextBtn.textContent = "Lanjut →";
-        return;
-      }
 
-      showSlide(index + 1);
-    });
+    /* ---------- Next button ---------- */
 
-    // Keyboard support
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowRight" || e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        nextBtn.click();
-      }
-      if (e.key === "ArrowLeft" && index > 0) {
-        showSlide(index - 1);
-      }
-    });
+    nextBtn.addEventListener(
+      "click",
+      () => {
 
-    // Touch swipe support
+        if (
+          index ===
+          slides.length - 1
+        ) {
+
+          slides[index]
+            .classList
+            .remove("active");
+
+          index = 0;
+
+          slides[index]
+            .classList
+            .add("active");
+
+          current.textContent = "01";
+
+          dots.forEach(
+            (dot, i) => {
+
+              dot.classList.toggle(
+                "active",
+                i === 0
+              );
+
+            }
+          );
+
+          nextBtn.textContent =
+            "Lanjut →";
+
+          return;
+        }
+
+        showSlide(index + 1);
+
+      }
+    );
+
+
+    /* ---------- Keyboard support ---------- */
+
+    document.addEventListener(
+      "keydown",
+      (e) => {
+
+        if (
+          e.key === "ArrowRight" ||
+          e.key === "Enter" ||
+          e.key === " "
+        ) {
+
+          e.preventDefault();
+
+          nextBtn.click();
+
+        }
+
+
+        if (
+          e.key === "ArrowLeft" &&
+          index > 0
+        ) {
+
+          showSlide(index - 1);
+
+        }
+
+      }
+    );
+
+
+    /* ---------- Touch swipe ---------- */
+
     let startX = 0;
 
-    document.addEventListener("touchstart", (e) => {
-      startX = e.changedTouches[0].screenX;
-    }, { passive: true });
 
-    document.addEventListener("touchend", (e) => {
-      const endX = e.changedTouches[0].screenX;
-      const distance = endX - startX;
+    document.addEventListener(
+      "touchstart",
+      (e) => {
 
-      if (Math.abs(distance) > 60) {
-        if (distance < 0) nextBtn.click();
-        else if (index > 0) showSlide(index - 1);
+        startX =
+          e.changedTouches[0].screenX;
+
+      },
+      {
+        passive: true
       }
-    }, { passive: true });
+    );
+
+
+    document.addEventListener(
+      "touchend",
+      (e) => {
+
+        const endX =
+          e.changedTouches[0].screenX;
+
+        const distance =
+          endX - startX;
+
+
+        if (
+          Math.abs(distance) > 60
+        ) {
+
+          if (distance < 0) {
+
+            nextBtn.click();
+
+          } else if (index > 0) {
+
+            showSlide(index - 1);
+
+          }
+
+        }
+
+      },
+      {
+        passive: true
+      }
+    );
+
   </script>
+
 </body>
 </html>
