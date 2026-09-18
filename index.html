@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Graduation ✦</title>
+
+  <!-- Elegant fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ivory: #f8f3ed;
+      --cream: #eee4d8;
+      --blush: #d8a8a4;
+      --dusty-rose: #b98282;
+      --rose-dark: #805b5d;
+      --sage: #89917d;
+      --gold: #b9a071;
+      --brown: #6d5b55;
+      --white: #fffdf9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background: var(--ivory);
+      color: var(--brown);
+      font-family: "Montserrat", sans-serif;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* ---------- Background ---------- */
+    .page {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(216,168,164,.22), transparent 26%),
+        radial-gradient(circle at 88% 80%, rgba(137,145,125,.14), transparent 25%),
+        var(--ivory);
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(185,160,113,.30);
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .page::after {
+      content: "";
+      position: absolute;
+      inset: 36px;
+      border: 1px solid rgba(216,168,164,.20);
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    /* ---------- Decorative arch ---------- */
+    .arch {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(650px, 82vw);
+      height: min(820px, 94vh);
+      transform: translate(-50%, -48%);
+      border: 2px solid rgba(185,160,113,.22);
+      border-bottom: 0;
+      border-radius: 330px 330px 0 0;
+      pointer-events: none;
+    }
+
+    .arch::before {
+      content: "";
+      position: absolute;
+      inset: 13px;
+      border: 1px solid rgba(185,160,113,.22);
+      border-bottom: 0;
+      border-radius: inherit;
+    }
+
+    .arch::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 1px;
+      height: 72%;
+      background: rgba(185,160,113,.15);
+    }
+
+    /* ---------- Flowers ---------- */
+    .flower {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      opacity: .72;
+    }
+
+    .flower-left {
+      left: -18px;
+      bottom: -10px;
+      transform: rotate(-8deg);
+    }
+
+    .flower-right {
+      right: -30px;
+      bottom: -4px;
+      transform: scaleX(-1) rotate(-7deg);
+    }
+
+    .stem {
+      position: absolute;
+      width: 2px;
+      height: 250px;
+      background: linear-gradient(to top, rgba(92,111,81,.25), rgba(92,111,81,.75));
+      bottom: 0;
+      left: 48px;
+      transform: rotate(-14deg);
+      transform-origin: bottom;
+    }
+
+    .stem.s2 {
+      height: 190px;
+      left: 100px;
+      transform: rotate(7deg);
+    }
+
+    .stem.s3 {
+      height: 150px;
+      left: 12px;
+      transform: rotate(-28deg);
+    }
+
+    .petal-cluster {
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 10%, #e4bbb6 0 20%, transparent 21%),
+        radial-gradient(circle at 90% 50%, #d5a29e 0 20%, transparent 21%),
+        radial-gradient(circle at 50% 90%, #e4bbb6 0 20%, transparent 21%),
+        radial-gradient(circle at 10% 50%, #d5a29e 0 20%, transparent 21%),
+        radial-gradient(circle, #f3dcd5 0 13%, transparent 14%);
+    }
+
+    .pc1 { left: 18px; bottom: 210px; }
+    .pc2 { left: 78px; bottom: 175px; transform: scale(.78); }
+    .pc3 { left: 0; bottom: 126px; transform: scale(.62); }
+    .pc4 { left: 108px; bottom: 255px; transform: scale(.62); }
+
+    .flower-right .petal-cluster {
+      background:
+        radial-gradient(circle at 50% 10%, #ead0c5 0 20%, transparent 21%),
+        radial-gradient(circle at 90% 50%, #ddb4aa 0 20%, transparent 21%),
+        radial-gradient(circle at 50% 90%, #ead0c5 0 20%, transparent 21%),
+        radial-gradient(circle at 10% 50%, #ddb4aa 0 20%, transparent 21%),
+        radial-gradient(circle, #fff2e8 0 13%, transparent 14%);
+    }
+
+    /* ---------- Slides ---------- */
+    .slides {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 70px 7vw 90px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(55px) scale(.985);
+      filter: blur(7px);
+      transition:
+        opacity .65s ease,
+        transform .75s cubic-bezier(.22,.61,.36,1),
+        filter .65s ease,
+        visibility 0s linear .75s;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0) scale(1);
+      filter: blur(0);
+      transition:
+        opacity .65s ease,
+        transform .75s cubic-bezier(.22,.61,.36,1),
+        filter .65s ease,
+        visibility 0s;
+    }
+
+    .slide.prev {
+      transform: translateX(-55px) scale(.985);
+    }
+
+    .content {
+      position: relative;
+      width: min(950px, 100%);
+      text-align: center;
+      z-index: 3;
+    }
+
+    .eyebrow {
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      font-size: 10px;
+      color: var(--rose-dark);
+      margin-bottom: 15px;
+    }
+
+    h1, h2, .script {
+      font-family: "Cormorant Garamond", Georgia, serif;
+    }
+
+    h1 {
+      font-size: clamp(58px, 10vw, 118px);
+      line-height: .82;
+      font-weight: 500;
+      color: var(--rose-dark);
+      text-shadow: 0 2px 18px rgba(128,91,93,.08);
+    }
+
+    h2 {
+      font-size: clamp(44px, 7vw, 78px);
+      font-weight: 500;
+      line-height: .95;
+      color: var(--rose-dark);
+    }
+
+    .amp {
+      display: block;
+      font-size: 26px;
+      color: var(--gold);
+      margin: 10px 0;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+    }
+
+    .subtitle {
+      max-width: 580px;
+      margin: 22px auto 0;
+      line-height: 1.9;
+      font-size: 12px;
+      font-weight: 400;
+      color: #806f68;
+    }
+
+    .name {
+      margin-top: 22px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(30px, 5vw, 52px);
+      color: var(--brown);
+      font-weight: 600;
+    }
+
+    .date {
+      margin-top: 7px;
+      font-size: 10px;
+      letter-spacing: .28em;
+      color: var(--sage);
+    }
+
+    /* ---------- Buttons ---------- */
+    .next-btn {
+      position: absolute;
+      bottom: 34px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+      border: 1px solid rgba(128,91,93,.42);
+      background: rgba(255,253,249,.76);
+      color: var(--rose-dark);
+      border-radius: 999px;
+      padding: 12px 23px;
+      min-width: 125px;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: .25s ease;
+    }
+
+    .next-btn:hover {
+      background: var(--rose-dark);
+      color: white;
+      transform: translateX(-50%) translateY(-3px);
+      box-shadow: 0 10px 30px rgba(128,91,93,.18);
+    }
+
+    .next-btn:active {
+      transform: translateX(-50%) scale(.96);
+    }
+
+    .progress {
+      position: fixed;
+      left: 50%;
+      bottom: 17px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 40;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(128,91,93,.22);
+      transition: .35s ease;
+    }
+
+    .dot.active {
+      width: 22px;
+      border-radius: 99px;
+      background: var(--dusty-rose);
+    }
+
+    .counter {
+      position: fixed;
+      top: 38px;
+      right: 48px;
+      z-index: 30;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 18px;
+      color: rgba(128,91,93,.55);
+    }
+
+    /* ---------- Greeting card ---------- */
+    .card {
+      width: min(680px, 92vw);
+      margin: 28px auto 0;
+      padding: 42px 48px;
+      background: rgba(255,253,249,.67);
+      border: 1px solid rgba(185,160,113,.3);
+      box-shadow: 0 20px 70px rgba(109,91,85,.07);
+      position: relative;
+    }
+
+    .card::before,
+    .card::after {
+      content: "✦";
+      position: absolute;
+      color: var(--gold);
+      font-size: 15px;
+    }
+
+    .card::before { left: 18px; top: 14px; }
+    .card::after { right: 18px; bottom: 14px; }
+
+    .card p {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(20px, 3vw, 27px);
+      line-height: 1.55;
+      color: #705e59;
+    }
+
+    .signature {
+      margin-top: 23px;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 23px;
+      color: var(--rose-dark);
+    }
+
+    /* ---------- Photo slides ---------- */
+    .photo-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+      text-align: left;
+      width: min(900px, 100%);
+      margin: auto;
+    }
+
+    .photo-frame {
+      width: min(410px, 100%);
+      aspect-ratio: 4 / 5;
+      margin: auto;
+      padding: 9px;
+      background: rgba(255,253,249,.82);
+      border: 1px solid rgba(185,160,113,.35);
+      box-shadow: 0 25px 65px rgba(109,91,85,.12);
+      transform: rotate(-2deg);
+      transition: transform .5s ease;
+    }
+
+    .photo-frame:hover {
+      transform: rotate(0deg) translateY(-4px);
+    }
+
+    .photo-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background:
+        linear-gradient(135deg, rgba(216,168,164,.4), rgba(238,228,216,.75)),
+        repeating-linear-gradient(45deg, transparent 0 15px, rgba(255,255,255,.18) 15px 16px);
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      color: rgba(109,91,85,.65);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .photo-copy {
+      padding-right: 25px;
+    }
+
+    .photo-number {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 70px;
+      line-height: .8;
+      color: rgba(185,160,113,.45);
+      margin-bottom: 16px;
+    }
+
+    .photo-copy h2 {
+      font-size: clamp(38px, 5vw, 58px);
+      margin-bottom: 17px;
+    }
+
+    .photo-copy p {
+      font-size: 12px;
+      line-height: 1.9;
+      color: #806f68;
+      max-width: 390px;
+    }
+
+    /* ---------- Ending ---------- */
+    .final-star {
+      font-size: 30px;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+
+    .final-message {
+      margin: 22px auto;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(22px, 3.4vw, 32px);
+      line-height: 1.45;
+      max-width: 650px;
+      color: #705e59;
+    }
+
+    .tiny {
+      margin-top: 24px;
+      font-size: 9px;
+      letter-spacing: .25em;
+      color: var(--sage);
+      text-transform: uppercase;
+    }
+
+    /* ---------- Sparkles ---------- */
+    .sparkles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .sparkle {
+      position: absolute;
+      color: rgba(185,160,113,.5);
+      font-size: 12px;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .sp1 { left: 16%; top: 22%; animation-delay: -.8s; }
+    .sp2 { left: 79%; top: 20%; animation-delay: -2s; font-size: 8px; }
+    .sp3 { left: 87%; top: 64%; animation-delay: -3.1s; }
+    .sp4 { left: 11%; top: 67%; animation-delay: -1.7s; font-size: 8px; }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0) rotate(0); opacity: .3; }
+      50% { transform: translateY(-13px) rotate(18deg); opacity: .8; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 700px) {
+      .page::before { inset: 10px; }
+      .page::after { inset: 20px; }
+
+      .arch {
+        width: 82vw;
+        height: 78vh;
+      }
+
+      .slide {
+        padding: 60px 25px 88px;
+      }
+
+      .counter {
+        top: 25px;
+        right: 28px;
+      }
+
+      .photo-layout {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        text-align: center;
+      }
+
+      .photo-frame {
+        width: min(285px, 72vw);
+      }
+
+      .photo-copy {
+        padding-right: 0;
+      }
+
+      .photo-number {
+        display: none;
+      }
+
+      .photo-copy h2 {
+        font-size: 39px;
+      }
+
+      .photo-copy p {
+        margin: auto;
+      }
+
+      .card {
+        padding: 32px 25px;
+      }
+
+      .flower {
+        transform: scale(.7);
+        transform-origin: bottom;
+      }
+
+      .flower-right {
+        transform: scaleX(-1) scale(.7);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="arch"></div>
+
+    <!-- Decorative floral silhouettes -->
+    <div class="flower flower-left">
+      <div class="stem"></div>
+      <div class="stem s2"></div>
+      <div class="stem s3"></div>
+      <div class="petal-cluster pc1"></div>
+      <div class="petal-cluster pc2"></div>
+      <div class="petal-cluster pc3"></div>
+      <div class="petal-cluster pc4"></div>
+    </div>
+
+    <div class="flower flower-right">
+      <div class="stem"></div>
+      <div class="stem s2"></div>
+      <div class="stem s3"></div>
+      <div class="petal-cluster pc1"></div>
+      <div class="petal-cluster pc2"></div>
+      <div class="petal-cluster pc3"></div>
+      <div class="petal-cluster pc4"></div>
+    </div>
+
+    <div class="sparkles">
+      <span class="sparkle sp1">✦</span>
+      <span class="sparkle sp2">✧</span>
+      <span class="sparkle sp3">✦</span>
+      <span class="sparkle sp4">✧</span>
+    </div>
+
+    <div class="counter"><span id="current">01</span> / 06</div>
+
+    <section class="slides">
+
+      <!-- SLIDE 1 -->
+      <article class="slide active">
+        <div class="content">
+          <div class="eyebrow">A little celebration for you</div>
+          <h1>Happy<br>Graduation</h1>
+          <span class="amp">✦</span>
+          <div class="name">Nama Wisudawan / Wisudawati</div>
+          <div class="date">2026 · YOU DID IT</div>
+          <p class="subtitle">
+            Hari ini bukan cuma tentang toga dan gelar,
+            tapi tentang semua proses, air mata, tawa,
+            dan perjuangan yang akhirnya sampai di sini.
+          </p>
+        </div>
+      </article>
+
+      <!-- SLIDE 2 -->
+      <article class="slide">
+        <div class="content">
+          <div class="eyebrow">A message for you</div>
+          <h2>Untuk seseorang<br>yang berhasil sampai akhir</h2>
+
+          <div class="card">
+            <p>
+              “Selamat atas kelulusanmu! Semoga setelah hari ini,
+              semakin banyak hal baik yang datang. Jangan lupa
+              menikmati pencapaian ini, karena kamu benar-benar
+              pantas merayakannya.”
+            </p>
+            <div class="signature">with love, someone who is proud of you ♡</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- SLIDE 3 -->
+      <article class="slide">
+        <div class="content">
+          <div class="photo-layout">
+            <div class="photo-frame">
+              <!-- Ganti src dengan foto kamu, contoh: src="foto1.jpg" -->
+              <div class="photo-placeholder">
+                FOTO 01<br>
+                <small>ganti dengan foto wisuda kamu</small>
+              </div>
+            </div>
+
+            <div class="photo-copy">
+              <div class="photo-number">01</div>
+              <h2>The beginning<br>of a new chapter.</h2>
+              <p>
+                Satu foto untuk mengingat hari ketika semua
+                perjuangan berubah menjadi sebuah pencapaian.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- SLIDE 4 -->
+      <article class="slide">
+        <div class="content">
+          <div class="photo-layout">
+            <div class="photo-frame">
+              <div class="photo-placeholder">
+                FOTO 02<br>
+                <small>ganti dengan foto favoritmu</small>
+              </div>
+            </div>
+
+            <div class="photo-copy">
+              <div class="photo-number">02</div>
+              <h2>Remember<br>how far you came.</h2>
+              <p>
+                Dari hari-hari yang berat sampai hari ini.
+                Semua langkah kecil ternyata membawa kamu
+                sejauh ini.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- SLIDE 5 -->
+      <article class="slide">
+        <div class="content">
+          <div class="photo-layout">
+            <div class="photo-frame">
+              <div class="photo-placeholder">
+                FOTO 03<br>
+                <small>ganti dengan foto bersama</small>
+              </div>
+            </div>
+
+            <div class="photo-copy">
+              <div class="photo-number">03</div>
+              <h2>More dreams<br>are waiting.</h2>
+              <p>
+                Kelulusan bukan akhir. Ini adalah pintu menuju
+                cerita baru, mimpi baru, dan versi baru dari dirimu.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- SLIDE 6 -->
+      <article class="slide">
+        <div class="content">
+          <div class="final-star">✦</div>
+          <div class="eyebrow">And finally...</div>
+          <h2>Congratulations!</h2>
+          <div class="final-message">
+            May this achievement be the first of many beautiful
+            things that are yet to come.
+          </div>
+          <div class="name">You did it. ♡</div>
+          <div class="tiny">the end · but also a new beginning</div>
+        </div>
+      </article>
+
+    </section>
+
+    <button class="next-btn" id="nextBtn" type="button">Lanjut →</button>
+    <div class="progress" id="progress"></div>
+  </main>
+
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    const nextBtn = document.getElementById("nextBtn");
+    const current = document.getElementById("current");
+    const progress = document.getElementById("progress");
+
+    let index = 0;
+    let locked = false;
+
+    // Create progress dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement("span");
+      dot.className = "dot" + (i === 0 ? " active" : "");
+      progress.appendChild(dot);
+    });
+
+    const dots = [...document.querySelectorAll(".dot")];
+
+    function showSlide(nextIndex) {
+      if (locked || nextIndex === index) return;
+
+      locked = true;
+
+      const oldIndex = index;
+      index = (nextIndex + slides.length) % slides.length;
+
+      slides[oldIndex].classList.remove("active");
+      slides[oldIndex].classList.add("prev");
+
+      // Small delay makes the "leave -> enter" animation feel intentional
+      setTimeout(() => {
+        slides[index].classList.add("active");
+        slides[oldIndex].classList.remove("prev");
+      }, 90);
+
+      current.textContent = String(index + 1).padStart(2, "0");
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+
+      nextBtn.textContent = index === slides.length - 1
+        ? "Ulangi ↻"
+        : "Lanjut →";
+
+      setTimeout(() => {
+        locked = false;
+      }, 780);
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (index === slides.length - 1) {
+        // Restart from the first slide
+        slides[index].classList.remove("active");
+        index = 0;
+        slides[index].classList.add("active");
+        current.textContent = "01";
+        dots.forEach((dot, i) => dot.classList.toggle("active", i === 0));
+        nextBtn.textContent = "Lanjut →";
+        return;
+      }
+
+      showSlide(index + 1);
+    });
+
+    // Keyboard support
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        nextBtn.click();
+      }
+      if (e.key === "ArrowLeft" && index > 0) {
+        showSlide(index - 1);
+      }
+    });
+
+    // Touch swipe support
+    let startX = 0;
+
+    document.addEventListener("touchstart", (e) => {
+      startX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    document.addEventListener("touchend", (e) => {
+      const endX = e.changedTouches[0].screenX;
+      const distance = endX - startX;
+
+      if (Math.abs(distance) > 60) {
+        if (distance < 0) nextBtn.click();
+        else if (index > 0) showSlide(index - 1);
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
